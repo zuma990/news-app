@@ -10,7 +10,6 @@ interface NewsState {
     error: string | null;
 
 }
-
 const initialState: NewsState = {
     status: 'idle',
     articles: [],
@@ -19,18 +18,18 @@ const initialState: NewsState = {
 };
 export const fetchTopHeadlines = createAsyncThunk(
     'news/fetchTopHeadlines',
-    async (options: { country?: string; category?: string; pageSize?: number; page?: number } = {}, thunkAPI) => {
-        const { country = 'us', category = 'general', pageSize = 20, page = 1 } = options;
+    async (options: { country?: string; category?: string; pageSize?: number; page?: number; source?: string } = {}) => {
+        const { country = 'us', category = 'general', pageSize = 20, page = 1, source } = options;
         const response = await fetchNews({
             endpoint: 'top-headlines',
             country,
             category,
             pageSize,
             page,
+             ...(source ? { sources: source } : {}),
         });
-        const prevArticles = (thunkAPI.getState() as { news: NewsState }).news.articles;
         const newArticles = response.data.articles;
-        const allArticles = page === 1 ? newArticles : prevArticles.concat(newArticles);
+        const allArticles = page === 1 ? newArticles.slice(0, pageSize) : newArticles;
         return {
             totalResults: response.data.totalResults,
             articles: allArticles,

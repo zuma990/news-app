@@ -9,6 +9,7 @@ import Typography from '@mui/material/Typography';
 import { Article } from '../types';
 import img from '../images/default-news.jpg'
 import {useNavigate} from "react-router-dom";
+
 interface NewsCardProps {
     article: Article;
 }

@@ -3,7 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import Home from './components/Home'
 import ArticlePage from './components/ArticlePage'
 import Header from "./components/Header";
-function MainRouter( props ) {
+function MainRouter() {
     return (
         <div>
             <Header /><br/>

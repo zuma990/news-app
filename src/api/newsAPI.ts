@@ -13,7 +13,6 @@ interface FetchNewsOptions {
     category?: string;
     sortBy?: 'popularity' | 'relevancy' | 'publishedAt';
 }
-
 export const fetchNews = async (
     options: FetchNewsOptions
 ): Promise<{ data: NewsResponse }> => {

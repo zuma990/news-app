@@ -25,9 +25,9 @@ export default function SearchPage() {
         dispatch(fetchNewsSearch({ query, sortBy: sortBy as 'popularity' | 'relevancy' | 'publishedAt' }));
     };
     const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
-        if (event.key === 'Enter') {
-            handleSearch();
-        }
+            if (event.key === 'Enter') {
+                handleSearch();
+            }
     };
     return (
         <div>
@@ -37,7 +37,7 @@ export default function SearchPage() {
                     p: '2px 4px',
                     display: 'flex',
                     alignItems: 'center',
-                    width: 400,
+                    maxWidth: 800,
                     margin: 'auto',
                     marginTop: '30px'
                 }}
