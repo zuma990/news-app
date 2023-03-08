@@ -25,7 +25,7 @@ function Home() {
                 <Grid container spacing={2}>
                     <Grid item xs={12}>
                         <Paper>
-                            <h2>Top Headlines News</h2>
+                            <h2>Top Headlines</h2>
                             {status === 'loading' && (
                                 <CircularProgress data-testid="loading-indicator" />
                             )}
